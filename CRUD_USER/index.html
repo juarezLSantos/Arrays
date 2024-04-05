@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Juarez Lima">
+    <title>Sistema CRUD</title>
+</head>
+<body>
+    <script>
+
+        //Método de cadastro de usuário => (verbo HTTP: POST)
+        //CRIAR SISTEMA DE GERENCIAMENTO DE USUÁRIO
+
+        let arrUsers = [];
+
+        function showMenu(){
+            parseInt(prompt(` 
+                *****Menu*****
+                [1] - Cadastrar usuário
+                [2] - Listar usuário(s)
+                [3] - Atualizar usuário
+                [4] - Deletar usuário
+                [5] - Sair do programa
+            `))    
+        }
+
+
+        const addUser = () => {
+
+        const nameUser = prompt("Informe o nome da pessoa:");
+        const emailUser = prompt("Informe o email da pessoa:");
+        if (!emailUser || !nameUser){
+        alert("O nome é obrigatório")
+
+           // E OU => Lógicos (&&, !!,!)
+        }
+           arrUsers.push({nameUser,emailUser});
+
+           console.log(arrUsers);
+        }
+
+        addUser();
+
+        //Método de listagem de usuário => (verbo,HTTP: GET)
+          const ListUser = () => {
+
+            arrUsers.forEach((dataUser) => {
+                 listUser =  '';
+
+                 //Método de atualizar => (verbo,HTTP: PUT)
+                 function updateUserInfo(){
+                    const findEmail = prompt("Informe o email que você deseja atualizar")
+                    const usuárioEncontrado = arrUsers.filter(user.nameUser === findEmail
+                    
+
+                    if (usuárioEncontrado) {
+                      alert("Usuário não foi encontrado!")
+
+                      return;
+                    
+
+                      usuárioencontrado.nameUser = variavelNova
+                      usuarioencontrado.nameUser = variavelNovaEmail
+                    }else{
+                      alert("Não encontrei ninguém")
+
+
+                      updateUserInfo()
+                    }
+                        
+                    }
+
+                    }
+                 }
+
+                listUser += " Nome: " + dataUser.nameUser + " Email: " + dataUser.emailUser
+            })
+            alert("*****Lista de usuários*****" + listUser);
+          };
+
+
+
+        
+    </script>
+</body>
+</html>
