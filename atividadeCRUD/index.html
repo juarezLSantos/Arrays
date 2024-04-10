@@ -8,7 +8,137 @@
 </head>
 <body>
     <script> 
-    
-    </script>
+    let arrayAgenda = [];
+
+function showMenu() {
+  return parseInt(
+    prompt(`
+            *****Menu*****
+            [1] - Adicionar contato
+            [2] - Visualizar contato(s)
+            [3] - Atualizar contato
+            [4] - Excluir contato
+            [5] - Sair do programa
+        `)
+  );
+}
+
+//Método de cadastro de contato => (Verbo HTTP: POST)
+const AddUser = () => {
+  const nameUser = prompt("Informe o nome do contato:");
+  const numberUser = prompt("Informe o número do contato:");
+  const emailUser = prompt("Informe o email do contato:");
+  //Horario--------
+  const dataAtual = new Date().toLocaleDateString();
+  const dia = new Date()
+  const horaAtual=dia.getHours();
+  const minutos=dia.getMinutes();
+  const segundos=dia.getSeconds();
+  const formatada= horaAtual+":"+minutos+":"+segundos;
+  arrayAgenda.push({nameUser,numberUser,emailUser,dataAtual,formatada});
+
+  console.log(arrayAgenda);
+
+  if (!nameUser || !numberUser || !emailUser) {
+    alert("Os campos são obrigatórios! ");
+  }
+
+  // E OU -> Lógicos (&&, ||, !)
+
+  arrayAgenda.push({ nameUser, numberUser, emailUser });
+
+  console.log(arrUsers);
+};
+
+
+
+//Método de listagem de contato => (Verbo HTTP: GET)
+const ListUser = () => {
+
+  let listUser = '';
+
+  arrUsers.forEach((dataUser) => {
+    listUser += ` 
+      Nome: ${dataUser.nameUser}, Número: ${dataUser.numberUser} Email: ${dataUser.emailUser}, Data: ${dataUser.dataAtual} Hora: ${dataUser.formatada}`
+  });
+
+  console.log(listUser);
+
+  alert("*****Lista de contatos*****" + listUser);
+};
+
+
+
+//Método de Atualizar => (Verbo HTTP: PUT)
+function UpdateUserInfo() {
+  const findName = prompt("Informe o nome que você deseja atualizar!")
+  const contatoEncontrado = arrUsers.find (user => user.nameUser === findName);
+
+  if (!contatoEncontrado) {
+    alert("contato não foi encontrado!")
+
+    return;
+  }
+
+  const novoNome = prompt("Informe o nome do contato:")
+  const novoNumero = prompt("Informe o novo numero do contato:")
+  const novoEmail  = prompt("Informe o novo email do contato")
+
+  // condição retornado o se verdadeiro
+  novoNome  ? contatoEncontrado.nameUser  = novoNome : null
+  novoNumero ? contatoEncontrado.numberUser = novoNumero : null 
+  novoEmail ? contatoEncontrado.emailUser = novoEmail : null
+
+  if (novoNome) {
+    contatoEncontrado.nameUser = novoNome
+
+    alert("Contato foi atualizado com sucesso!")
+  }
+
+}
+
+//Método para delete => verbo HTTP (DELETE)
+function DeleteUser(){
+  const contactDelete = prompt("Informe o nome do contato para realizar delete!")
+  const indiceDelite  = arrUsers.findIndex(name => name.nameUser === contactDelete)
+  
+  const confirmacao = window.confirm(`você deseja mesmo excluir o contato ${contactDelete} ?`)
+
+  if (confirmacao) {
+    arrUsers.splice(indiceDelite, 1)
+  }
+  alert("Contato deletado com sucesso!")
+}
+
+
+let opcaoUser = true
+
+while (opcaoUser) {
+
+
+  switch (showMenu()) {
+    case 1:
+      AddUser();
+      break;
+    case 2:
+      ListUser();
+      break;
+    case 3:
+      UpdateUserInfo();
+      break;
+    case 4:
+      DeleteUser();
+      break;
+    case 5:
+      alert("Saindo do programa,até mais!")
+      opcaoUser = false
+      break;
+    default:
+      alert("Opção inválida! Tente novamnte")
+      break;
+  }
+}
+</script>
 </body>
+
 </html>
