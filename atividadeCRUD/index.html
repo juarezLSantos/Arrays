@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Juarez Lima">
-    <title>Atividade CRUD</title>
+    <title>Atividade CRUD AGENDA</title>
 </head>
 <body>
     <script> 
-    let arrayAgenda = [];
+    let arrUsers = [];
 
 function showMenu() {
   return parseInt(
@@ -35,9 +35,9 @@ const AddUser = () => {
   const minutos=dia.getMinutes();
   const segundos=dia.getSeconds();
   const formatada= horaAtual+":"+minutos+":"+segundos;
-  arrayAgenda.push({nameUser,numberUser,emailUser,dataAtual,formatada});
+  arrUsers.push({nameUser,numberUser,emailUser,dataAtual,formatada});
 
-  console.log(arrayAgenda);
+  console.log(arrUsers);
 
   if (!nameUser || !numberUser || !emailUser) {
     alert("Os campos são obrigatórios! ");
@@ -45,9 +45,7 @@ const AddUser = () => {
 
   // E OU -> Lógicos (&&, ||, !)
 
-  arrayAgenda.push({ nameUser, numberUser, emailUser });
-
-  console.log(arrUsers);
+  
 };
 
 
@@ -59,7 +57,7 @@ const ListUser = () => {
 
   arrUsers.forEach((dataUser) => {
     listUser += ` 
-      Nome: ${dataUser.nameUser}, Número: ${dataUser.numberUser} Email: ${dataUser.emailUser}, Data: ${dataUser.dataAtual} Hora: ${dataUser.formatada}`
+      Nome: ${dataUser.nameUser}, Número: ${dataUser.numberUser} Email: ${dataUser.emailUser}, (Data: ${dataUser.dataAtual} Hora: ${dataUser.formatada})`
   });
 
   console.log(listUser);
